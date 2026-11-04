@@ -93,21 +93,6 @@ makes the most new outfits with what you have.
 | Tests | pytest, Playwright (Chromium), Node |
 | Deployment | Render blueprint (`render.yaml`), Dockerfile and `docker-compose.yml` |
 
-## Architecture
-
-```
- Browser (any device)                         Flask server (backend/)                   MySQL 8
- *.html + assets/js ──fetch /api (cookies)──▶  api_auth  api_wardrobe  api_outfits  ───▶ users, sessions,
-   api.js  (CSRF header)                        api_photos  api_profile                  items, images,
-   local/images.js: cut-outs (WASM)             security.py (sessions, CSRF, limits)     outfits, photos,
-   engine/shop.js: Smart buys                   store.py  ──▶ ml/fitcheck_ml (engine)    feedback, saved,
-   local/weather.js ──▶ Open-Meteo              photo_engine.py ──HTTPS──▶ Pollinations  secrets ...
-                                                                       └──▶ Gemini
-```
-
-More in [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md). The endpoints are in
-[`docs/API.md`](docs/API.md).
-
 ## Install and run
 
 You need **Python 3.13** and **MySQL 8**, or just **Docker**. Full instructions, including
@@ -153,22 +138,6 @@ repository. `render.yaml` creates the web service and a private MySQL service wi
 disk, and generates `SECRET_KEY`. It asks you for one database password, used twice. See
 [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md).
 
-### After editing pages, styles or scripts
-
-```bash
-python scripts/update_csp.py     # refresh the inline-script hashes in each page's policy
-python scripts/build_sw.py       # refresh the offline file list and cache version
-```
-
-`tests/static` fails if either is out of date.
-
-### Retrain the models (optional)
-
-```bash
-pip install -r tests/requirements.txt
-cd notebooks && jupyter nbconvert --to notebook --execute --inplace FitCheck_AI_ML_Analysis.ipynb
-```
-
 ## How an outfit is chosen
 
 1. **Shortlist:** score each piece for the occasion, weather and style, and keep the best
@@ -201,52 +170,6 @@ Ratings are **simulated**: 320 people rate 10,240 outfits. Results on 64 held-ou
 | KNN | 0.739 | 0.826 | 0.809 |
 | Decision Tree | 0.735 | 0.816 | 0.795 |
 | Hybrid (what the app ranks by) | 0.721 | 0.760 | **0.818** |
-
-## Tests
-
-```bash
-pip install -r tests/requirements.txt
-python -m playwright install chromium
-# a MySQL test database: fitcheck_test, user fitcheck_app (see docs/DEPLOYMENT.md, or set TEST_DB_*)
-python -m pytest tests/ml tests/engine tests/static tests/backend
-python -m pytest tests/frontend          # starts the server and a fake photo service itself
-```
-
-| Suite | What it checks |
-|---|---|
-| `tests/backend` | 42 tests on the real app, MySQL and a fake mail server: password reset, devices, auth, cookies, CSRF, rate limits, sessions, headers, file whitelist, ownership, SQL injection, uploads, outfits, photos (against a fake service), sealed keys, backup, deletion |
-| `tests/frontend` | a 29-step browser journey against the running server, including the emailed reset link and offline use |
-| `tests/static` | pages, links, imports, CSP, no secrets or off-site calls, deployment files |
-| `tests/ml`, `tests/engine` | the engine, colour maths, Smart buys and the weather mapping |
-
-Results are in [`TEST_REPORT.md`](TEST_REPORT.md).
-
-## Security and privacy
-
-Full audit: [`SECURITY.md`](SECURITY.md). What is stored and shared:
-[`privacy.html`](privacy.html). In short:
-
-- **Accounts:**
-  - scrypt hashes;
-  - common passwords refused;
-  - server-side sign-in limits;
-  - sessions in an **HttpOnly, Secure, SameSite** cookie, with only a hash stored;
-  - 30-minute idle sign-out; sign out everywhere;
-  - the password is asked again before a backup or deletion.
-- **CSRF:** a token and an Origin check on every change.
-- **Password reset:** one-time, 30-minute links in the URL fragment, only a hash stored,
-  identical answers for unknown emails, every device signed out afterwards.
-- **Keys:** sealed with Fernet on the server and never sent to the browser or into
-  backups.
-- **Database:**
-  - parameterised queries;
-  - a least-privilege user;
-  - foreign keys with cascade delete;
-  - uploads re-encoded (metadata stripped);
-  - images served only to their owner.
-- **Headers:** strict CSP, HSTS, `frame-ancestors 'none'`, `nosniff`, `no-referrer`,
-  Permissions-Policy, COOP/CORP. Only pages and `assets/` are served.
-- **Two necessary cookies, no analytics, no tracking.**
 
 ## Limitations
 
