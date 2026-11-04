@@ -1,0 +1,201 @@
+{
+  "model_version": "1.0.0",
+  "trained_at": "2026-11-04T02:32:45+00:00",
+  "author": "Swayam Shakya",
+  "dataset": {
+    "source": "synthetic (see notebook section 2)",
+    "rows": 10192,
+    "people": 320,
+    "like_rate": 0.6965
+  },
+  "feature_names": [
+    "temperature_c",
+    "total_warmth",
+    "warmth_gap",
+    "mean_formality",
+    "formality_spread",
+    "n_items",
+    "has_outerwear",
+    "n_accessories",
+    "is_dress",
+    "n_neutral",
+    "n_bold",
+    "n_pastel",
+    "n_earthy",
+    "mean_lightness",
+    "lightness_range",
+    "mean_chroma",
+    "max_delta_e",
+    "occasion_tag_frac",
+    "style_coherence",
+    "style_match",
+    "sporty_frac",
+    "season_fit",
+    "rain_ready",
+    "rule_occasion",
+    "rule_weather",
+    "rule_style",
+    "rule_color",
+    "occasion=casual",
+    "occasion=college",
+    "occasion=work",
+    "occasion=formal",
+    "occasion=party",
+    "occasion=sports",
+    "occasion=date",
+    "occasion=travel",
+    "weather=sunny",
+    "weather=cloudy",
+    "weather=rainy",
+    "weather=snowy",
+    "weather=windy",
+    "style_pref=none",
+    "style_pref=minimalist",
+    "style_pref=streetwear",
+    "style_pref=classic",
+    "style_pref=smart_casual",
+    "style_pref=sporty",
+    "style_pref=elegant",
+    "palette=any",
+    "palette=neutral",
+    "palette=monochrome",
+    "palette=earthy",
+    "palette=bold",
+    "palette=pastel"
+  ],
+  "numeric_features": [
+    "temperature_c",
+    "total_warmth",
+    "warmth_gap",
+    "mean_formality",
+    "formality_spread",
+    "n_items",
+    "has_outerwear",
+    "n_accessories",
+    "is_dress",
+    "n_neutral",
+    "n_bold",
+    "n_pastel",
+    "n_earthy",
+    "mean_lightness",
+    "lightness_range",
+    "mean_chroma",
+    "max_delta_e",
+    "occasion_tag_frac",
+    "style_coherence",
+    "style_match",
+    "sporty_frac",
+    "season_fit",
+    "rain_ready",
+    "rule_occasion",
+    "rule_weather",
+    "rule_style",
+    "rule_color"
+  ],
+  "categorical_features": {
+    "occasion": [
+      "casual",
+      "college",
+      "work",
+      "formal",
+      "party",
+      "sports",
+      "date",
+      "travel"
+    ],
+    "weather": [
+      "sunny",
+      "cloudy",
+      "rainy",
+      "snowy",
+      "windy"
+    ],
+    "style_pref": [
+      "none",
+      "minimalist",
+      "streetwear",
+      "classic",
+      "smart_casual",
+      "sporty",
+      "elegant"
+    ],
+    "palette": [
+      "any",
+      "neutral",
+      "monochrome",
+      "earthy",
+      "bold",
+      "pastel"
+    ]
+  },
+  "decision_tree": {
+    "params": {
+      "criterion": "gini",
+      "max_depth": 7,
+      "min_samples_leaf": 100
+    },
+    "cv_roc_auc": 0.7593
+  },
+  "knn": {
+    "params": {
+      "knn__n_neighbors": 121,
+      "knn__weights": "uniform",
+      "select__k": 6
+    },
+    "cv_roc_auc": 0.7793
+  },
+  "blend": {
+    "decision_tree": 0.481,
+    "knn": 0.519
+  },
+  "test_metrics": {
+    "Majority class": {
+      "accuracy": 0.665,
+      "precision": 0.665,
+      "recall": 1.0,
+      "f1": 0.799,
+      "roc_auc": 0.5
+    },
+    "Rules only": {
+      "accuracy": 0.712,
+      "precision": 0.877,
+      "recall": 0.66,
+      "f1": 0.753,
+      "roc_auc": 0.811
+    },
+    "KNN": {
+      "accuracy": 0.739,
+      "precision": 0.742,
+      "recall": 0.932,
+      "f1": 0.826,
+      "roc_auc": 0.809
+    },
+    "Decision Tree": {
+      "accuracy": 0.735,
+      "precision": 0.76,
+      "recall": 0.88,
+      "f1": 0.816,
+      "roc_auc": 0.795
+    },
+    "ML blend": {
+      "accuracy": 0.733,
+      "precision": 0.745,
+      "recall": 0.912,
+      "f1": 0.82,
+      "roc_auc": 0.811
+    },
+    "Hybrid (deployed)": {
+      "accuracy": 0.721,
+      "precision": 0.885,
+      "recall": 0.666,
+      "f1": 0.76,
+      "roc_auc": 0.818
+    }
+  },
+  "versions": {
+    "python": "3.13.18",
+    "scikit-learn": "1.9.1",
+    "numpy": "2.5.3",
+    "pandas": "3.0.5"
+  }
+}

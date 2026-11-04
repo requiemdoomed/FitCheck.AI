@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval' 'sha256-Yd9uvy1ZPoMFnWWgteNR5ykAr+pHgg3PamAY5jrfGnU='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://api.open-meteo.com; worker-src 'self' blob:; frame-src 'none'; media-src 'self' blob:; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy and cookies, FitCheck.AI</title>
+  <meta name="author" content="Swayam Shakya">
+  <meta name="theme-color" content="#fff5e8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#150a2c" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="assets/images/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="assets/images/favicon.png" sizes="64x64" type="image/png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="assets/images/icons/apple-touch-icon.png">
+  <script>
+    (function () {
+      // FitCheck.AI is never meant to be framed: hide it if another site does (clickjacking)
+      if (window.top !== window.self) document.documentElement.style.display = "none";
+      try {
+        var t = localStorage.getItem("fitcheck.theme");
+        if (t === "dark" || t === "light") document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preload" href="assets/fonts/bungee.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/rubik-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/app.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+  <script type="module" src="assets/js/pages/legal.js"></script>
+</head>
+<body class="legal">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="wordmark" href="index.html" aria-label="FitCheck.AI home"><img class="wordmark__logo" src="assets/images/logo/fitcheck-mark.png" alt="" width="36" height="36">FitCheck<span class="wordmark__ai">.ai</span></a>
+      <div class="site-header__actions">
+        <button class="icon-btn theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to dark mode"><span class="swatch" aria-hidden="true"></span></button>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="container legal__main">
+    <h1>Privacy and cookies</h1>
+    <p class="legal__updated">Last updated 3 November 2026</p>
+
+    <h2>The short version</h2>
+    <ul>
+      <li>FitCheck.AI stores your account, wardrobe and outfits on its server so you can use them from any device. Only you can see them.</li>
+      <li>It uses two cookies, both strictly necessary for signing in securely. No analytics, no ads, no tracking, no selling or sharing of data for marketing.</li>
+      <li>Outfit photos are made by an AI image service; what is sent to it is described below.</li>
+      <li>You can download all your data, or delete your account and everything in it, at any time from your profile.</li>
+    </ul>
+
+    <h2>What is stored</h2>
+    <p>In the FitCheck.AI database:</p>
+    <ul>
+      <li><strong>Account</strong>: your name, email, and a salted scrypt hash of your password. The password itself is never stored.</li>
+      <li><strong>Wardrobe</strong>: the pieces you add, their tags, colours and patterns, and the photos you upload. Photos are re-encoded on upload, which removes hidden metadata such as GPS location.</li>
+      <li><strong>Outfits</strong>: suggestions, scores, the AI photos made of them, your likes, saved outfits and what you've marked as worn.</li>
+      <li><strong>Preferences</strong>: styles, colours, units, budget, and how the person in your photos should look.</li>
+      <li><strong>Keys for photo services</strong>, if you add any, encrypted. They are used only by the server and never sent back to a browser.</li>
+      <li><strong>Sign-in sessions</strong>: a fingerprint (hash) of each session token, when it was used, and your browser's name, so sessions can expire and you can see and sign out each device (Profile, then Sign-in and security).</li>
+      <li><strong>Password-reset links</strong>, if you ask for one: a fingerprint (hash) of the one-time link and when it expires (30 minutes). The link itself is only in the email.</li>
+      <li><strong>Abuse protection</strong>: hashed sign-in attempts and photo requests, kept for up to two days, to slow down password guessing and protect the photo services.</li>
+    </ul>
+
+    <h2>Cookies</h2>
+    <p>FitCheck.AI sets only these, and only once you sign in:</p>
+    <ul>
+      <li><code>fc_session</code>: keeps you signed in. HttpOnly (page scripts can't read it), Secure, SameSite=Lax. It ends when you close the browser, or after 30 days if you chose "Keep me signed in".</li>
+      <li><code>fc_csrf</code>: a random value the pages send back with every change, so other sites can't act in your name. Secure, SameSite=Strict.</li>
+    </ul>
+    <p>Both are strictly necessary for the service you asked for, so there is no cookie banner. The browser also keeps a few local settings (your theme and the last generator choices in a tab), and an offline copy of FitCheck.AI's own pages, styles and scripts so they open without a connection. That copy never holds your wardrobe, photos or account details, which stay on the server. Nothing is used to track you.</p>
+
+    <h2 id="photos">Outfit photos</h2>
+    <p>When an outfit is shown, the FitCheck.AI server asks an AI image service for a realistic photo of it:</p>
+    <ul>
+      <li><strong>Pollinations</strong> (default; open source; <a href="https://pollinations.ai" rel="noopener" target="_blank">pollinations.ai</a>). It receives a text description of the outfit and the person (for example "a woman with fair skin wearing a white blouse and black midi skirt"), with no name or email. If a Pollinations key is in use, it also receives a board of the outfit's clothing photos so the picture can match them.</li>
+      <li><strong>Google Gemini</strong> (only if you choose it and add your own key). It receives the description and the outfit's clothing photos. Google's terms and privacy policy apply to that use.</li>
+    </ul>
+    <p>Requests come from the FitCheck.AI server, not your browser, so the services don't see your IP address. We ask for private generation; each service's own policy decides what it keeps.</p>
+
+    <h2>Email</h2>
+    <p>FitCheck.AI emails you only when you ask to reset your password. The message goes through the email provider the server's operator has set up, which receives your email address and the message. No newsletters, no marketing, and the reset page gives the same answer whether or not an address has an account.</p>
+
+    <h2>Weather</h2>
+    <p>Only if you press "Use my local weather": your browser asks for your location, rounds it to about 1 km and sends it from your browser to <a href="https://open-meteo.com" rel="noopener" target="_blank">Open-Meteo</a> for the current temperature and conditions. It isn't sent to or stored by FitCheck.AI.</p>
+
+    <h2>Who can see your data</h2>
+    <p>Only you, through your account. Every request is checked against the signed-in account; photos are served only to their owner. The people who run the server can technically access the database to operate it, and the hosting providers process it on their behalf. Data isn't sold or shared for advertising.</p>
+
+    <h2>Security</h2>
+    <p>Connections are encrypted (HTTPS); passwords are hashed with scrypt; photo-service keys are encrypted; sessions expire after 30 minutes without use (or 30 days if you choose "Keep me signed in"); sign-in attempts are limited. See SECURITY.md in the project for the full design and audit.</p>
+
+    <h2>How long data is kept</h2>
+    <p>Until you delete it. Removing a piece archives it so past outfits still make sense; deleting your account erases the account and everything in it straight away. Expired sessions (after 30 days), used or expired reset links (after a day) and rate-limit records (after two days) are cleared automatically.</p>
+
+    <h2>Your rights</h2>
+    <ul>
+      <li><strong>Access and portability</strong>: Profile, then Backup, downloads everything as one file.</li>
+      <li><strong>Correction</strong>: edit any piece, preference or your name at any time.</li>
+      <li><strong>Erasure</strong>: Profile, then Delete my account.</li>
+      <li><strong>Withdraw</strong>: remove photo-service keys in Profile at any time, and revoke them at the service.</li>
+    </ul>
+
+    <h2>Children</h2>
+    <p>FitCheck.AI is not meant for children under 13.</p>
+
+    <h2>Changes and contact</h2>
+    <p>If this policy changes, the date above changes with it. FitCheck.AI was designed and built by Swayam Shakya; questions can go to whoever runs the FitCheck.AI server you're using.</p>
+  </main>
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <p>FitCheck.AI, designed and built by <strong>Swayam Shakya</strong>.</p>
+      <nav aria-label="Footer" class="footer-links">
+        <a href="privacy.html">Privacy and cookies</a>
+        <a href="terms.html">Terms</a>
+        <a href="index.html">Home</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

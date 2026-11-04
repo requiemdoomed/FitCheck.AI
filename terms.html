@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval' 'sha256-Yd9uvy1ZPoMFnWWgteNR5ykAr+pHgg3PamAY5jrfGnU='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://api.open-meteo.com; worker-src 'self' blob:; frame-src 'none'; media-src 'self' blob:; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Terms of use, FitCheck.AI</title>
+  <meta name="author" content="Swayam Shakya">
+  <meta name="theme-color" content="#fff5e8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#150a2c" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="assets/images/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="assets/images/favicon.png" sizes="64x64" type="image/png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="assets/images/icons/apple-touch-icon.png">
+  <script>
+    (function () {
+      // FitCheck.AI is never meant to be framed: hide it if another site does (clickjacking)
+      if (window.top !== window.self) document.documentElement.style.display = "none";
+      try {
+        var t = localStorage.getItem("fitcheck.theme");
+        if (t === "dark" || t === "light") document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preload" href="assets/fonts/bungee.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/rubik-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/app.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+  <script type="module" src="assets/js/pages/legal.js"></script>
+</head>
+<body class="legal">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="wordmark" href="index.html" aria-label="FitCheck.AI home"><img class="wordmark__logo" src="assets/images/logo/fitcheck-mark.png" alt="" width="36" height="36">FitCheck<span class="wordmark__ai">.ai</span></a>
+      <div class="site-header__actions">
+        <button class="icon-btn theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to dark mode"><span class="swatch" aria-hidden="true"></span></button>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="container legal__main">
+    <h1>Terms of use</h1>
+    <p class="legal__updated">Last updated 3 November 2026</p>
+
+    <h2>What FitCheck.AI is</h2>
+    <p>FitCheck.AI suggests outfits from clothes you own and shows them as AI-generated photos. It's provided free, as is, for personal use.</p>
+
+    <h2>AI photos</h2>
+    <ul>
+      <li>Outfit photos are made by AI image models. They show a generated person, not you, and are an approximation of how the clothes look together. Colours, fit and details may differ from your real garments.</li>
+      <li>Only upload photos of clothes you have the right to use, and don't use the photo features to make images of real people without their consent or to create anything unlawful or harmful.</li>
+      <li>Third-party services (Pollinations, Google Gemini) have their own terms, which apply when you use them through FitCheck.AI. Keys you add are your own; any charges from those services are between you and them.</li>
+      <li>Photo requests are limited per hour to keep the free services available for everyone.</li>
+    </ul>
+
+    <h2>Suggestions and prices</h2>
+    <p>Outfit scores and Smart buys are suggestions, not professional advice. Prices shown are typical ranges, not offers. FitCheck.AI sells nothing and earns nothing from what you buy.</p>
+
+    <h2>Your data</h2>
+    <p>Your data is stored on the FitCheck.AI server and handled as explained in the <a href="privacy.html">privacy policy</a>. You can download it or delete it at any time.</p>
+
+    <h2>Availability</h2>
+    <p>FitCheck.AI and the free services it uses may change or be unavailable at times. There's no warranty, and to the extent the law allows, no liability for loss arising from its use.</p>
+
+  </main>
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <p>FitCheck.AI, designed and built by <strong>Swayam Shakya</strong>.</p>
+      <nav aria-label="Footer" class="footer-links">
+        <a href="privacy.html">Privacy and cookies</a>
+        <a href="terms.html">Terms</a>
+        <a href="index.html">Home</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

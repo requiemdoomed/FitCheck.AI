@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval' 'sha256-Yd9uvy1ZPoMFnWWgteNR5ykAr+pHgg3PamAY5jrfGnU='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://api.open-meteo.com; worker-src 'self' blob:; frame-src 'none'; media-src 'self' blob:; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Get dressed, FitCheck.AI</title>
+  <meta name="author" content="Swayam Shakya">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#fff5e8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#150a2c" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="assets/images/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="assets/images/favicon.png" sizes="64x64" type="image/png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="assets/images/icons/apple-touch-icon.png">
+  <script>
+    (function () {
+      // FitCheck.AI is never meant to be framed: hide it if another site does (clickjacking)
+      if (window.top !== window.self) document.documentElement.style.display = "none";
+      try {
+        var t = localStorage.getItem("fitcheck.theme");
+        if (t === "dark" || t === "light") document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preload" href="assets/fonts/bungee.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/rubik-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/app.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+  <script type="module" src="assets/js/pages/generator.js"></script>
+</head>
+<body class="app">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header data-shell-header class="site-header"></header>
+
+  <main id="main" class="container app-main">
+
+    <div class="page-head">
+      <div>
+        <h1>Get dressed</h1>
+        <p>Tell FitCheck.AI where you're going and what it's like out. It'll pick from your wardrobe.</p>
+      </div>
+    </div>
+
+    <div class="gen-layout">
+      <form class="gen-form panel" data-gen-form novalidate>
+        <fieldset class="chips" data-field="occasion">
+          <legend>Where are you going?</legend>
+          <div class="chips" data-occasions></div>
+        </fieldset>
+
+        <fieldset class="chips" data-field="weather">
+          <legend>What's the weather? <button class="btn btn--sm btn--quiet weather-auto" type="button" data-local-weather>Use my local weather</button></legend>
+          <div class="chips" data-weather></div>
+        </fieldset>
+
+        <div class="field" data-field="temperature_c">
+          <div class="temp-row">
+            <label class="field__label" for="g-temp">Temperature</label>
+            <output class="temp-readout" for="g-temp" data-temp-readout>18°C</output>
+          </div>
+          <input class="range" type="range" id="g-temp" min="-20" max="40" step="1" value="18" data-temp>
+          <div class="temp-scale" aria-hidden="true"><span>Freezing</span><span>Mild</span><span>Hot</span></div>
+        </div>
+
+        <details class="gen-more">
+          <summary>Style and colours <span class="field__hint">(optional)</span></summary>
+          <fieldset class="chips">
+            <legend>Style</legend>
+            <div class="chips" data-styles></div>
+          </fieldset>
+          <fieldset class="chips">
+            <legend>Colour palette</legend>
+            <div class="chips" data-palettes></div>
+          </fieldset>
+        </details>
+
+        <button class="btn btn--primary btn--lg gen-submit" type="submit" data-generate>Find my outfit</button>
+      </form>
+
+      <section class="gen-result" aria-live="polite" aria-label="Your outfit" data-result></section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <p>FitCheck.AI, designed and built by <strong>Swayam Shakya</strong>.</p>
+      <span class="api-status" data-api-status data-state="checking">Starting up…</span>
+      <nav aria-label="Footer" class="footer-links"><a href="privacy.html">Privacy and cookies</a> <a href="terms.html">Terms</a></nav>
+    </div>
+  </footer>
+  <nav data-shell-tabbar></nav>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval' 'sha256-Yd9uvy1ZPoMFnWWgteNR5ykAr+pHgg3PamAY5jrfGnU='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://api.open-meteo.com; worker-src 'self' blob:; frame-src 'none'; media-src 'self' blob:; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wardrobe, FitCheck.AI</title>
+  <meta name="author" content="Swayam Shakya">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#fff5e8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#150a2c" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="assets/images/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="assets/images/favicon.png" sizes="64x64" type="image/png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="assets/images/icons/apple-touch-icon.png">
+  <script>
+    (function () {
+      // FitCheck.AI is never meant to be framed: hide it if another site does (clickjacking)
+      if (window.top !== window.self) document.documentElement.style.display = "none";
+      try {
+        var t = localStorage.getItem("fitcheck.theme");
+        if (t === "dark" || t === "light") document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preload" href="assets/fonts/bungee.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/rubik-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/app.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+  <script type="module" src="assets/js/pages/wardrobe.js"></script>
+</head>
+<body class="app">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header data-shell-header class="site-header"></header>
+
+  <main id="main" class="container app-main">
+
+    <div class="page-head">
+      <div>
+        <h1>Wardrobe</h1>
+        <p>Everything you own, tagged so FitCheck.AI can dress you from it.</p>
+      </div>
+      <div class="page-head__actions">
+        <button class="btn btn--primary" type="button" data-add-item>Add a piece</button>
+      </div>
+    </div>
+
+    <form class="toolbar" data-filters role="search" aria-label="Filter your wardrobe">
+      <div class="field">
+        <label class="field__label" for="f-q">Search</label>
+        <input class="input" id="f-q" name="q" type="search" placeholder="Name, type, colour…" maxlength="80">
+      </div>
+      <div class="field">
+        <label class="field__label" for="f-color">Colour</label>
+        <select class="select" id="f-color" name="color"><option value="">Any colour</option></select>
+      </div>
+      <div class="field">
+        <label class="field__label" for="f-season">Season</label>
+        <select class="select" id="f-season" name="season"><option value="">Any season</option></select>
+      </div>
+      <div class="field">
+        <label class="field__label" for="f-style">Style</label>
+        <select class="select" id="f-style" name="style"><option value="">Any style</option></select>
+      </div>
+      <div class="field">
+        <label class="field__label" for="f-sort">Sort</label>
+        <select class="select" id="f-sort" name="sort">
+          <option value="newest">Newest first</option>
+          <option value="oldest">Oldest first</option>
+          <option value="name">Name A–Z</option>
+          <option value="category">By category</option>
+        </select>
+      </div>
+      <button class="btn btn--quiet" type="reset">Clear</button>
+    </form>
+
+    <div class="cat-tabs" role="group" aria-label="Category" data-cat-tabs></div>
+    <p class="result-count" data-count aria-live="polite"></p>
+    <div data-items><div class="loading-block"><span class="stitch-loader" role="status"><svg viewBox="0 0 64 10" aria-hidden="true"><line x1="2" y1="5" x2="62" y2="5"/></svg><span>Opening your wardrobe…</span></span></div></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <p>FitCheck.AI, designed and built by <strong>Swayam Shakya</strong>.</p>
+      <span class="api-status" data-api-status data-state="checking">Starting up…</span>
+      <nav aria-label="Footer" class="footer-links"><a href="privacy.html">Privacy and cookies</a> <a href="terms.html">Terms</a></nav>
+    </div>
+  </footer>
+  <nav data-shell-tabbar></nav>
+
+  <dialog class="dialog" id="item-dialog" aria-labelledby="item-dialog-title">
+    <form class="item-form" novalidate>
+      <div class="dialog__head">
+        <h2 class="dialog__title" id="item-dialog-title">Add a piece</h2>
+        <button class="icon-btn" type="button" data-close aria-label="Close">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15"/></svg>
+        </button>
+      </div>
+      <div class="dialog__body">
+        <div class="field" data-field="image">
+          <span class="field__label" id="photo-label">Photo</span>
+          <div class="dropzone" data-dropzone>
+            <div class="dropzone__preview" data-preview></div>
+            <div>
+              <p class="field__hint">JPG, PNG or WebP. Big phone photos are shrunk for you. We cut the piece out of the background so the model can wear it. No photo? We'll show a real garment of that type, dyed to the colour you pick.</p>
+              <div class="dropzone__actions">
+                <label class="btn btn--sm" for="item-image">Choose photo</label>
+                <button class="btn btn--sm btn--quiet" type="button" data-remove-photo hidden>Remove photo</button>
+              </div>
+              <input class="visually-hidden" type="file" id="item-image" name="image" accept="image/jpeg,image/png,image/webp" aria-labelledby="photo-label">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="field span-2">
+            <label class="field__label" for="item-name">Name</label>
+            <input class="input" id="item-name" name="name" maxlength="80" placeholder="e.g. White oxford shirt" required>
+          </div>
+
+          <fieldset class="chips span-2" data-field="category">
+            <legend>Category</legend>
+            <div class="chips" data-category-chips></div>
+          </fieldset>
+
+          <div class="field">
+            <label class="field__label" for="item-sub">Type</label>
+            <input class="input" id="item-sub" name="subcategory" list="sub-options" maxlength="40" placeholder="Pick or type" required>
+            <datalist id="sub-options"></datalist>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="item-style">Style</label>
+            <select class="select" id="item-style" name="style" required></select>
+          </div>
+
+          <fieldset class="field span-2" data-field="main_color">
+            <legend class="field__label">Main colour</legend>
+            <div class="swatches" data-swatches="main_color"></div>
+            <label class="custom-colour">
+              <input type="color" data-custom-colour="main_color" value="#7a86a3"> Or pick an exact colour
+            </label>
+            <p class="colour-hint" data-colour-hint aria-live="polite"></p>
+          </fieldset>
+
+          <fieldset class="field span-2" data-field="secondary_color">
+            <legend class="field__label">Second colour <span class="field__hint">(optional)</span></legend>
+            <div class="swatches" data-swatches="secondary_color"></div>
+          </fieldset>
+
+          <fieldset class="chips span-2" data-field="seasons">
+            <legend>Seasons</legend>
+            <div class="chips" data-season-chips></div>
+          </fieldset>
+
+          <fieldset class="chips span-2" data-field="occasions">
+            <legend>Good for</legend>
+            <div class="chips" data-occasion-chips></div>
+          </fieldset>
+
+          <div class="field span-2">
+            <label class="field__label" for="item-desc">Notes <span class="field__hint">(optional)</span></label>
+            <textarea class="textarea" id="item-desc" name="description" maxlength="500" placeholder="Fabric, fit, anything worth remembering"></textarea>
+          </div>
+        </div>
+
+        <div class="dialog__actions">
+          <button class="btn" type="button" data-close>Cancel</button>
+          <button class="btn btn--primary" type="submit" data-submit>Add to wardrobe</button>
+        </div>
+      </div>
+    </form>
+  </dialog>
+</body>
+</html>

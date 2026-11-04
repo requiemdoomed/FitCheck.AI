@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval' 'sha256-UHDKyYtlK/tVLZ5EXAs0scqR97ePPebwaM0C+sLk1dA='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://api.open-meteo.com; worker-src 'self' blob:; frame-src 'none'; media-src 'self' blob:; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found, FitCheck.AI</title>
+  <meta name="author" content="Swayam Shakya">
+  <!--
+    The server answers any unknown address with this page, which might be
+    several folders deep. Relative links would break there, so work out the
+    site root first.
+  -->
+  <script>
+    (function () {
+      var root = "/";
+      if (/\.github\.io$/.test(location.hostname)) {
+        var first = location.pathname.split("/")[1];
+        if (first && first.indexOf(".") === -1) root = "/" + first + "/";
+      }
+      document.write('<base href="' + root + '">');
+      // FitCheck.AI is never meant to be framed: hide it if another site does (clickjacking)
+      if (window.top !== window.self) document.documentElement.style.display = "none";
+      try {
+        var t = localStorage.getItem("fitcheck.theme");
+        if (t === "dark" || t === "light") document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="icon" href="assets/images/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="assets/images/favicon.png" sizes="64x64" type="image/png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="assets/images/icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <style>
+    .lost {
+      display: grid;
+      justify-items: start;
+      gap: var(--s5);
+      padding-block: var(--s9);
+      max-width: 40rem;
+    }
+    .lost svg { width: 120px; height: 120px; color: var(--ink); }
+    .lost h1 { font-size: var(--t-2xl); }
+    .lost p { color: var(--ink-soft); font-size: var(--t-md); }
+  </style>
+</head>
+<body>
+  <main class="container lost">
+    <!-- a single odd sock -->
+    <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" aria-hidden="true">
+      <path d="M48 10h34v52c0 6 2 10 6 14l8 9c9 10 5 25-8 27-6 1-11-1-15-5L46 78c-5-5-6-10-6-16V10Z" fill="var(--sun)"/>
+      <path d="M44 10h40v14H44Z" fill="var(--surface)"/>
+      <path d="M50 14v6m8-6v6m8-6v6m8-6v6" stroke-width="2"/>
+    </svg>
+    <h1>This page isn't here</h1>
+    <p>The link may be out of date or mistyped. Everything else is where you left it.</p>
+    <a class="btn btn--primary btn--lg" href="index.html">Go to the FitCheck.AI home page</a>
+  </main>
+</body>
+</html>

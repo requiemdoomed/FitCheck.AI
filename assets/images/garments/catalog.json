@@ -1,0 +1,906 @@
+[
+ {
+  "slug": "breton-stripe-tee",
+  "name": "Breton stripe tee",
+  "category": "top",
+  "subcategory": "t-shirt",
+  "main_color": "#1f2a4a",
+  "main_color_name": "navy",
+  "secondary_color": "#f5f5f2",
+  "style": "classic",
+  "occasions": [
+   "casual",
+   "college",
+   "travel",
+   "date"
+  ],
+  "seasons": [
+   "spring",
+   "summer",
+   "autumn"
+  ],
+  "image": "assets/images/garments/breton-stripe-tee.jpg",
+  "source": "clothing-dataset-small/test/t-shirt/05d01bf9-6ff5-4c5e-b946-b4ca004a125b.jpg",
+  "cutout": "assets/images/garments/cutouts/breton-stripe-tee.webp",
+  "pattern": "striped"
+ },
+ {
+  "slug": "hot-pink-tee",
+  "name": "Hot pink tee",
+  "category": "top",
+  "subcategory": "t-shirt",
+  "main_color": "#d6408a",
+  "main_color_name": "magenta",
+  "secondary_color": null,
+  "style": "streetwear",
+  "occasions": [
+   "casual",
+   "party",
+   "college"
+  ],
+  "seasons": [
+   "spring",
+   "summer"
+  ],
+  "image": "assets/images/garments/hot-pink-tee.jpg",
+  "source": "clothing-dataset-small/test/t-shirt/3e88a1d2-832b-49bd-b471-53f03b1b66ff.jpg",
+  "cutout": "assets/images/garments/cutouts/hot-pink-tee.webp"
+ },
+ {
+  "slug": "plain-white-tee",
+  "name": "Plain white tee",
+  "category": "top",
+  "subcategory": "t-shirt",
+  "main_color": "#f2f3f1",
+  "main_color_name": "white",
+  "secondary_color": null,
+  "style": "minimalist",
+  "occasions": [
+   "casual",
+   "college",
+   "travel"
+  ],
+  "seasons": [
+   "spring",
+   "summer",
+   "autumn"
+  ],
+  "image": "assets/images/garments/plain-white-tee.jpg",
+  "source": "clothing-dataset-small/test/t-shirt/80f0c986-0a06-419c-97a5-c56d6bd3d840.jpg",
+  "cutout": "assets/images/garments/cutouts/plain-white-tee.webp"
+ },
+ {
+  "slug": "sunshine-tee",
+  "name": "Sunshine yellow tee",
+  "category": "top",
+  "subcategory": "t-shirt",
+  "main_color": "#e8b828",
+  "main_color_name": "yellow",
+  "secondary_color": null,
+  "style": "streetwear",
+  "occasions": [
+   "casual",
+   "college",
+   "travel"
+  ],
+  "seasons": [
+   "summer"
+  ],
+  "image": "assets/images/garments/sunshine-tee.jpg",
+  "source": "clothing-dataset-small/test/t-shirt/b7d4f382-14f4-40f2-8fce-f32b08f0c553.jpg",
+  "cutout": "assets/images/garments/cutouts/sunshine-tee.webp"
+ },
+ {
+  "slug": "colour-block-tee",
+  "name": "Colour-block tee",
+  "category": "top",
+  "subcategory": "t-shirt",
+  "main_color": "#8cc63f",
+  "main_color_name": "mint",
+  "secondary_color": "#1f2a4a",
+  "style": "sporty",
+  "occasions": [
+   "casual",
+   "sports",
+   "college"
+  ],
+  "seasons": [
+   "spring",
+   "summer"
+  ],
+  "image": "assets/images/garments/colour-block-tee.jpg",
+  "source": "clothing-dataset-small/test/t-shirt/259f2358-fb94-4e7e-bd05-864e28071c17.jpg",
+  "cutout": "assets/images/garments/cutouts/colour-block-tee.webp",
+  "pattern": "patterned"
+ },
+ {
+  "slug": "tropical-print-shirt",
+  "name": "Tropical print shirt",
+  "category": "top",
+  "subcategory": "shirt",
+  "main_color": "#e8ede4",
+  "main_color_name": "white",
+  "secondary_color": "#2f7d4f",
+  "style": "streetwear",
+  "occasions": [
+   "casual",
+   "party",
+   "date",
+   "travel"
+  ],
+  "seasons": [
+   "summer"
+  ],
+  "image": "assets/images/garments/tropical-print-shirt.jpg",
+  "source": "clothing-dataset-small/test/shirt/01b3083f-4387-4753-8ae2-a2470dc53f19.jpg",
+  "cutout": "assets/images/garments/cutouts/tropical-print-shirt.webp",
+  "pattern": "patterned"
+ },
+ {
+  "slug": "red-check-shirt",
+  "name": "Red check shirt",
+  "category": "top",
+  "subcategory": "shirt",
+  "main_color": "#9c2233",
+  "main_color_name": "red",
+  "secondary_color": "#1f2a4a",
+  "style": "smart_casual",
+  "occasions": [
+   "casual",
+   "college",
+   "date",
+   "work"
+  ],
+  "seasons": [
+   "spring",
+   "autumn"
+  ],
+  "image": "assets/images/garments/red-check-shirt.jpg",
+  "source": "clothing-dataset-small/test/shirt/4cfe336a-6f8c-4f87-a88d-ae4e3897215f.jpg",
+  "cutout": "assets/images/garments/cutouts/red-check-shirt.webp",
+  "pattern": "patterned"
+ },
+ {
+  "slug": "blue-hibiscus-shirt",
+  "name": "Blue hibiscus shirt",
+  "category": "top",
+  "subcategory": "shirt",
+  "main_color": "#2f6fd0",
+  "main_color_name": "blue",
+  "secondary_color": "#f5f5f2",
+  "style": "streetwear",
+  "occasions": [
+   "party",
+   "casual",
+   "travel"
+  ],
+  "seasons": [
+   "summer"
+  ],
+  "image": "assets/images/garments/blue-hibiscus-shirt.jpg",
+  "source": "clothing-dataset-small/test/shirt/c3ebe8e9-dab4-4e9d-aa83-d9e8a1fcf393.jpg",
+  "cutout": "assets/images/garments/cutouts/blue-hibiscus-shirt.webp",
+  "pattern": "patterned"
+ },
+ {
+  "slug": "pale-blue-oxford",
+  "name": "Pale blue oxford",
+  "category": "top",
+  "subcategory": "shirt",
+  "main_color": "#b9d3e6",
+  "main_color_name": "light blue",
+  "secondary_color": null,
+  "style": "classic",
+  "occasions": [
+   "work",
+   "college",
+   "date",
+   "formal"
+  ],
+  "seasons": [
+   "spring",
+   "summer",
+   "autumn",
+   "winter"
+  ],
+  "image": "assets/images/garments/pale-blue-oxford.jpg",
+  "source": "clothing-dataset-small/test/shirt/adab8f60-032a-4c67-94fc-4d2902a27501.jpg",
+  "cutout": "assets/images/garments/cutouts/pale-blue-oxford.webp"
+ },
+ {
+  "slug": "midnight-shirt",
+  "name": "Midnight dot shirt",
+  "category": "top",
+  "subcategory": "dress shirt",
+  "main_color": "#1f2a4a",
+  "main_color_name": "navy",
+  "secondary_color": null,
+  "style": "elegant",
+  "occasions": [
+   "work",
+   "formal",
+   "date",
+   "party"
+  ],
+  "seasons": [
+   "spring",
+   "autumn",
+   "winter"
+  ],
+  "image": "assets/images/garments/midnight-shirt.jpg",
+  "source": "clothing-dataset-small/test/shirt/cb5e105f-173a-443a-9f54-4b9cbf62919a.jpg",
+  "cutout": "assets/images/garments/cutouts/midnight-shirt.webp"
+ },
+ {
+  "slug": "leather-jacket",
+  "name": "Black leather jacket",
+  "category": "outerwear",
+  "subcategory": "leather jacket",
+  "main_color": "#232123",
+  "main_color_name": "black",
+  "secondary_color": null,
+  "style": "classic",
+  "occasions": [
+   "casual",
+   "date",
+   "party"
+  ],
+  "seasons": [
+   "autumn",
+   "spring"
+  ],
+  "image": "assets/images/garments/leather-jacket.jpg",
+  "source": "clothing-dataset-small/test/outwear/b167f39f-eea8-4f69-9494-e2346bd7e2c5.jpg",
+  "cutout": "assets/images/garments/cutouts/leather-jacket.webp"
+ },
+ {
+  "slug": "red-puffer",
+  "name": "Red puffer jacket",
+  "category": "outerwear",
+  "subcategory": "puffer jacket",
+  "main_color": "#c42b36",
+  "main_color_name": "red",
+  "secondary_color": null,
+  "style": "streetwear",
+  "occasions": [
+   "casual",
+   "college",
+   "travel"
+  ],
+  "seasons": [
+   "winter"
+  ],
+  "image": "assets/images/garments/red-puffer.jpg",
+  "source": "clothing-dataset-small/test/outwear/5272341c-6438-491d-ab64-44db18de7e28.jpg",
+  "cutout": "assets/images/garments/cutouts/red-puffer.webp"
+ },
+ {
+  "slug": "green-quilted-jacket",
+  "name": "Green quilted jacket",
+  "category": "outerwear",
+  "subcategory": "bomber jacket",
+  "main_color": "#2fa07a",
+  "main_color_name": "green",
+  "secondary_color": null,
+  "style": "smart_casual",
+  "occasions": [
+   "casual",
+   "college",
+   "travel"
+  ],
+  "seasons": [
+   "autumn",
+   "spring"
+  ],
+  "image": "assets/images/garments/green-quilted-jacket.jpg",
+  "source": "clothing-dataset-small/test/outwear/463bbfd1-880b-4537-abb8-8ef98c2894c5.jpg",
+  "cutout": "assets/images/garments/cutouts/green-quilted-jacket.webp"
+ },
+ {
+  "slug": "stone-trench",
+  "name": "Stone trench coat",
+  "category": "outerwear",
+  "subcategory": "trench coat",
+  "main_color": "#c9bba6",
+  "main_color_name": "beige",
+  "secondary_color": null,
+  "style": "classic",
+  "occasions": [
+   "work",
+   "formal",
+   "date",
+   "travel"
+  ],
+  "seasons": [
+   "spring",
+   "autumn"
+  ],
+  "image": "assets/images/garments/stone-trench.jpg",
+  "source": "clothing-dataset-small/test/outwear/fa9f16fa-8b47-4b83-9567-497888652a64.jpg",
+  "cutout": "assets/images/garments/cutouts/stone-trench.webp"
+ },
+ {
+  "slug": "peach-windbreaker",
+  "name": "Peach windbreaker",
+  "category": "outerwear",
+  "subcategory": "windbreaker",
+  "main_color": "#f2b880",
+  "main_color_name": "beige",
+  "secondary_color": null,
+  "style": "sporty",
+  "occasions": [
+   "casual",
+   "sports",
+   "travel"
+  ],
+  "seasons": [
+   "spring",
+   "summer"
+  ],
+  "image": "assets/images/garments/peach-windbreaker.jpg",
+  "source": "clothing-dataset-small/test/outwear/105c3674-f1d0-4fc6-8131-e53001670352.jpg",
+  "cutout": "assets/images/garments/cutouts/peach-windbreaker.webp"
+ },
+ {
+  "slug": "retro-windbreaker",
+  "name": "Retro panel windbreaker",
+  "category": "outerwear",
+  "subcategory": "windbreaker",
+  "main_color": "#1f2a4a",
+  "main_color_name": "navy",
+  "secondary_color": "#a9c4e4",
+  "style": "sporty",
+  "occasions": [
+   "casual",
+   "sports",
+   "college"
+  ],
+  "seasons": [
+   "spring",
+   "autumn"
+  ],
+  "image": "assets/images/garments/retro-windbreaker.jpg",
+  "source": "clothing-dataset-small/test/outwear/610bc298-714b-4a48-bffe-aedd8863cba8.jpg",
+  "cutout": "assets/images/garments/cutouts/retro-windbreaker.webp",
+  "pattern": "patterned"
+ },
+ {
+  "slug": "burgundy-coat",
+  "name": "Burgundy quilted coat",
+  "category": "outerwear",
+  "subcategory": "wool coat",
+  "main_color": "#6e2238",
+  "main_color_name": "burgundy",
+  "secondary_color": null,
+  "style": "elegant",
+  "occasions": [
+   "work",
+   "formal",
+   "date"
+  ],
+  "seasons": [
+   "winter",
+   "autumn"
+  ],
+  "image": "assets/images/garments/burgundy-coat.jpg",
+  "source": "clothing-dataset-small/test/outwear/e36dcac4-c66b-4120-b828-89bfc0110716.jpg",
+  "cutout": "assets/images/garments/cutouts/burgundy-coat.webp"
+ },
+ {
+  "slug": "dark-denim",
+  "name": "Dark wash jeans",
+  "category": "bottom",
+  "subcategory": "jeans",
+  "main_color": "#26324a",
+  "main_color_name": "navy",
+  "secondary_color": null,
+  "style": "streetwear",
+  "occasions": [
+   "casual",
+   "college",
+   "date",
+   "travel"
+  ],
+  "seasons": [
+   "spring",
+   "autumn",
+   "winter"
+  ],
+  "image": "assets/images/garments/dark-denim.jpg",
+  "source": "clothing-dataset-small/test/pants/2884d941-ccc9-4eac-b7d7-b9996126a9c8.jpg",
+  "cutout": "assets/images/garments/cutouts/dark-denim.webp"
+ },
+ {
+  "slug": "light-wash-jeans",
+  "name": "Light wash jeans",
+  "category": "bottom",
+  "subcategory": "jeans",
+  "main_color": "#8fa6c8",
+  "main_color_name": "light blue",
+  "secondary_color": null,
+  "style": "streetwear",
+  "occasions": [
+   "casual",
+   "college",
+   "travel"
+  ],
+  "seasons": [
+   "spring",
+   "summer",
+   "autumn"
+  ],
+  "image": "assets/images/garments/light-wash-jeans.jpg",
+  "source": "clothing-dataset-small/test/pants/7d3a88e9-2fb3-4044-bdb2-5bbdf66d8a1b.jpg",
+  "cutout": "assets/images/garments/cutouts/light-wash-jeans.webp"
+ },
+ {
+  "slug": "mustard-trousers",
+  "name": "Mustard cropped trousers",
+  "category": "bottom",
+  "subcategory": "trousers",
+  "main_color": "#d4a419",
+  "main_color_name": "mustard",
+  "secondary_color": null,
+  "style": "smart_casual",
+  "occasions": [
+   "work",
+   "date",
+   "party"
+  ],
+  "seasons": [
+   "spring",
+   "summer",
+   "autumn"
+  ],
+  "image": "assets/images/garments/mustard-trousers.jpg",
+  "source": "clothing-dataset-small/test/pants/52f73c9e-93da-47ae-bf67-f0e7b8216fe1.jpg",
+  "cutout": "assets/images/garments/cutouts/mustard-trousers.webp"
+ },
+ {
+  "slug": "sage-chinos",
+  "name": "Sage chinos",
+  "category": "bottom",
+  "subcategory": "chinos",
+  "main_color": "#8a9a7e",
+  "main_color_name": "khaki",
+  "secondary_color": null,
+  "style": "smart_casual",
+  "occasions": [
+   "work",
+   "college",
+   "casual",
+   "date"
+  ],
+  "seasons": [
+   "spring",
+   "summer",
+   "autumn"
+  ],
+  "image": "assets/images/garments/sage-chinos.jpg",
+  "source": "clothing-dataset-small/test/pants/9b94e20c-7ed2-4e8d-a9c2-884e3b685770.jpg",
+  "cutout": null
+ },
+ {
+  "slug": "black-wide-trousers",
+  "name": "Black wide trousers",
+  "category": "bottom",
+  "subcategory": "trousers",
+  "main_color": "#1d1a1c",
+  "main_color_name": "black",
+  "secondary_color": null,
+  "style": "elegant",
+  "occasions": [
+   "work",
+   "formal",
+   "party",
+   "date"
+  ],
+  "seasons": [
+   "spring",
+   "autumn",
+   "winter"
+  ],
+  "image": "assets/images/garments/black-wide-trousers.jpg",
+  "source": "clothing-dataset-small/test/pants/53a11bca-e1d7-45a3-8ab0-a17cab3062d1.jpg",
+  "cutout": "assets/images/garments/cutouts/black-wide-trousers.webp"
+ },
+ {
+  "slug": "white-shorts",
+  "name": "Ecru denim shorts",
+  "category": "bottom",
+  "subcategory": "shorts",
+  "main_color": "#ece4d4",
+  "main_color_name": "cream",
+  "secondary_color": null,
+  "style": "minimalist",
+  "occasions": [
+   "casual",
+   "travel",
+   "date"
+  ],
+  "seasons": [
+   "summer"
+  ],
+  "image": "assets/images/garments/white-shorts.jpg",
+  "source": "clothing-dataset-small/test/shorts/9935412e-9bfe-49be-b291-574c235e32fb.jpg",
+  "cutout": "assets/images/garments/cutouts/white-shorts.webp"
+ },
+ {
+  "slug": "striped-shorts",
+  "name": "Serape stripe shorts",
+  "category": "bottom",
+  "subcategory": "shorts",
+  "main_color": "#c4372e",
+  "main_color_name": "red",
+  "secondary_color": "#1f7a7a",
+  "style": "streetwear",
+  "occasions": [
+   "casual",
+   "party",
+   "travel"
+  ],
+  "seasons": [
+   "summer"
+  ],
+  "image": "assets/images/garments/striped-shorts.jpg",
+  "source": "clothing-dataset-small/test/shorts/fe85d21f-4ccf-41fd-b54d-5bc6ee0b0eec.jpg",
+  "cutout": "assets/images/garments/cutouts/striped-shorts.webp",
+  "pattern": "striped"
+ },
+ {
+  "slug": "red-mini-skirt",
+  "name": "Red cargo mini skirt",
+  "category": "bottom",
+  "subcategory": "skirt",
+  "main_color": "#c20e3a",
+  "main_color_name": "red",
+  "secondary_color": null,
+  "style": "streetwear",
+  "occasions": [
+   "party",
+   "date",
+   "casual"
+  ],
+  "seasons": [
+   "spring",
+   "summer"
+  ],
+  "image": "assets/images/garments/red-mini-skirt.jpg",
+  "source": "clothing-dataset-small/test/skirt/84b4da94-65c0-471e-a7ad-2ba6360f45bb.jpg",
+  "cutout": "assets/images/garments/cutouts/red-mini-skirt.webp"
+ },
+ {
+  "slug": "black-pleated-skirt",
+  "name": "Black pleated skirt",
+  "category": "bottom",
+  "subcategory": "skirt",
+  "main_color": "#221a1e",
+  "main_color_name": "black",
+  "secondary_color": null,
+  "style": "classic",
+  "occasions": [
+   "work",
+   "date",
+   "formal"
+  ],
+  "seasons": [
+   "spring",
+   "autumn",
+   "winter"
+  ],
+  "image": "assets/images/garments/black-pleated-skirt.jpg",
+  "source": "clothing-dataset-small/test/skirt/0558b2c5-be00-49de-b27f-8c88114ac36f.jpg",
+  "cutout": "assets/images/garments/cutouts/black-pleated-skirt.webp"
+ },
+ {
+  "slug": "geo-print-dress",
+  "name": "Geo print dress",
+  "category": "dress",
+  "subcategory": "casual dress",
+  "main_color": "#e25b85",
+  "main_color_name": "pink",
+  "secondary_color": "#1f2a4a",
+  "style": "streetwear",
+  "occasions": [
+   "party",
+   "date",
+   "casual"
+  ],
+  "seasons": [
+   "spring",
+   "summer"
+  ],
+  "image": "assets/images/garments/geo-print-dress.jpg",
+  "source": "clothing-dataset-small/test/dress/06a00c0f-5f9a-410d-a7da-3881a9df3a71.jpg",
+  "cutout": "assets/images/garments/cutouts/geo-print-dress.webp",
+  "pattern": "patterned"
+ },
+ {
+  "slug": "emerald-dress",
+  "name": "Emerald embroidered dress",
+  "category": "dress",
+  "subcategory": "cocktail dress",
+  "main_color": "#167a3c",
+  "main_color_name": "green",
+  "secondary_color": "#e2702f",
+  "style": "elegant",
+  "occasions": [
+   "party",
+   "date",
+   "formal"
+  ],
+  "seasons": [
+   "spring",
+   "summer",
+   "autumn"
+  ],
+  "image": "assets/images/garments/emerald-dress.jpg",
+  "source": "clothing-dataset-small/test/dress/bac70656-a50a-4a13-8c3f-63e3a0a28338.jpg",
+  "cutout": "assets/images/garments/cutouts/emerald-dress.webp"
+ },
+ {
+  "slug": "little-black-dress",
+  "name": "Little black dress",
+  "category": "dress",
+  "subcategory": "cocktail dress",
+  "main_color": "#1d1a1c",
+  "main_color_name": "black",
+  "secondary_color": null,
+  "style": "elegant",
+  "occasions": [
+   "formal",
+   "party",
+   "date"
+  ],
+  "seasons": [
+   "spring",
+   "autumn",
+   "winter"
+  ],
+  "image": "assets/images/garments/little-black-dress.jpg",
+  "source": "clothing-dataset-small/test/dress/8c6b26f9-e3d4-483b-99bd-db4f6beff442.jpg",
+  "cutout": "assets/images/garments/cutouts/little-black-dress.webp"
+ },
+ {
+  "slug": "striped-sundress",
+  "name": "Striped sundress",
+  "category": "dress",
+  "subcategory": "sundress",
+  "main_color": "#f0d0c4",
+  "main_color_name": "cream",
+  "secondary_color": "#1f2a4a",
+  "style": "minimalist",
+  "occasions": [
+   "casual",
+   "travel",
+   "date"
+  ],
+  "seasons": [
+   "summer"
+  ],
+  "image": "assets/images/garments/striped-sundress.jpg",
+  "source": "clothing-dataset-small/test/dress/ee7b4f87-ab2e-4387-9c7e-76f7da060f1e.jpg",
+  "cutout": "assets/images/garments/cutouts/striped-sundress.webp",
+  "pattern": "striped"
+ },
+ {
+  "slug": "white-sneakers",
+  "name": "White leather sneakers",
+  "category": "footwear",
+  "subcategory": "sneakers",
+  "main_color": "#f2f2ee",
+  "main_color_name": "white",
+  "secondary_color": null,
+  "style": "minimalist",
+  "occasions": [
+   "casual",
+   "college",
+   "travel",
+   "date"
+  ],
+  "seasons": [
+   "spring",
+   "summer",
+   "autumn"
+  ],
+  "image": "assets/images/garments/white-sneakers.jpg",
+  "source": "clothing-dataset-small/test/shoes/562fcdc1-cda7-40cd-bb7b-9b2c908d0931.jpg",
+  "cutout": "assets/images/garments/cutouts/white-sneakers.webp"
+ },
+ {
+  "slug": "brown-derbies",
+  "name": "Brown leather derbies",
+  "category": "footwear",
+  "subcategory": "dress shoes",
+  "main_color": "#4a2e22",
+  "main_color_name": "brown",
+  "secondary_color": null,
+  "style": "classic",
+  "occasions": [
+   "work",
+   "formal",
+   "date"
+  ],
+  "seasons": [
+   "spring",
+   "autumn",
+   "winter"
+  ],
+  "image": "assets/images/garments/brown-derbies.jpg",
+  "source": "clothing-dataset-small/test/shoes/132e5fa5-ed38-4293-8dff-20727b6b5ac2.jpg",
+  "cutout": "assets/images/garments/cutouts/brown-derbies.webp"
+ },
+ {
+  "slug": "brown-boots",
+  "name": "Brown ankle boots",
+  "category": "footwear",
+  "subcategory": "ankle boots",
+  "main_color": "#5a3a28",
+  "main_color_name": "brown",
+  "secondary_color": null,
+  "style": "classic",
+  "occasions": [
+   "casual",
+   "work",
+   "date",
+   "travel"
+  ],
+  "seasons": [
+   "autumn",
+   "winter"
+  ],
+  "image": "assets/images/garments/brown-boots.jpg",
+  "source": "clothing-dataset-small/test/shoes/98e89103-64e3-41db-adc0-f83726f757d5.jpg",
+  "cutout": "assets/images/garments/cutouts/brown-boots.webp"
+ },
+ {
+  "slug": "blue-runners",
+  "name": "Blue knit runners",
+  "category": "footwear",
+  "subcategory": "running shoes",
+  "main_color": "#3f86e0",
+  "main_color_name": "blue",
+  "secondary_color": null,
+  "style": "sporty",
+  "occasions": [
+   "sports",
+   "casual"
+  ],
+  "seasons": [
+   "spring",
+   "summer",
+   "autumn"
+  ],
+  "image": "assets/images/garments/blue-runners.jpg",
+  "source": "clothing-dataset-small/test/shoes/b5b1359c-f143-4955-a523-25c240777b9b.jpg",
+  "cutout": "assets/images/garments/cutouts/blue-runners.webp"
+ },
+ {
+  "slug": "white-flats",
+  "name": "White ballet flats",
+  "category": "footwear",
+  "subcategory": "flats",
+  "main_color": "#efece5",
+  "main_color_name": "white",
+  "secondary_color": null,
+  "style": "elegant",
+  "occasions": [
+   "work",
+   "date",
+   "formal",
+   "party"
+  ],
+  "seasons": [
+   "spring",
+   "summer"
+  ],
+  "image": "assets/images/garments/white-flats.jpg",
+  "source": "clothing-dataset-small/test/shoes/5f838a1c-6ab5-4629-a7cb-4a4755d408bb.jpg",
+  "cutout": "assets/images/garments/cutouts/white-flats.webp"
+ },
+ {
+  "slug": "cork-sandals",
+  "name": "Cork buckle sandals",
+  "category": "footwear",
+  "subcategory": "sandals",
+  "main_color": "#2f4f7a",
+  "main_color_name": "denim",
+  "secondary_color": "#b8864b",
+  "style": "minimalist",
+  "occasions": [
+   "casual",
+   "travel"
+  ],
+  "seasons": [
+   "summer"
+  ],
+  "image": "assets/images/garments/cork-sandals.jpg",
+  "source": "clothing-dataset-small/test/shoes/8648344c-5acb-4f5d-93a1-7e89489489bf.jpg",
+  "cutout": "assets/images/garments/cutouts/cork-sandals.webp"
+ },
+ {
+  "slug": "leather-newsboy-cap",
+  "name": "Leather newsboy cap",
+  "category": "accessory",
+  "subcategory": "cap",
+  "main_color": "#1b1b1d",
+  "main_color_name": "black",
+  "secondary_color": null,
+  "style": "classic",
+  "occasions": [
+   "casual",
+   "date",
+   "travel"
+  ],
+  "seasons": [
+   "autumn",
+   "winter"
+  ],
+  "image": "assets/images/garments/leather-newsboy-cap.jpg",
+  "source": "clothing-dataset-small/test/hat/3f0be386-9a59-4aeb-93f6-dbe63e3a3002.jpg",
+  "cutout": "assets/images/garments/cutouts/leather-newsboy-cap.webp"
+ },
+ {
+  "slug": "bobble-beanie",
+  "name": "Bobble beanie",
+  "category": "accessory",
+  "subcategory": "beanie",
+  "main_color": "#5a4a32",
+  "main_color_name": "brown",
+  "secondary_color": null,
+  "style": "streetwear",
+  "occasions": [
+   "casual",
+   "college",
+   "travel"
+  ],
+  "seasons": [
+   "winter"
+  ],
+  "image": "assets/images/garments/bobble-beanie.jpg",
+  "source": "clothing-dataset-small/test/hat/6c2f18d0-30ff-468c-a470-39c65abf4851.jpg",
+  "cutout": "assets/images/garments/cutouts/bobble-beanie.webp"
+ },
+ {
+  "slug": "butterfly-cap",
+  "name": "Butterfly cap",
+  "category": "accessory",
+  "subcategory": "cap",
+  "main_color": "#e88aa8",
+  "main_color_name": "pink",
+  "secondary_color": null,
+  "style": "streetwear",
+  "occasions": [
+   "casual",
+   "sports",
+   "travel"
+  ],
+  "seasons": [
+   "spring",
+   "summer"
+  ],
+  "image": "assets/images/garments/butterfly-cap.jpg",
+  "source": "clothing-dataset-small/test/hat/c399e385-258a-465c-95d1-ba216c16d7d1.jpg",
+  "cutout": "assets/images/garments/cutouts/butterfly-cap.webp"
+ },
+ {
+  "slug": "straw-sun-hat",
+  "name": "Striped sun hat",
+  "category": "accessory",
+  "subcategory": "cap",
+  "main_color": "#ece9e2",
+  "main_color_name": "white",
+  "secondary_color": "#b9a7da",
+  "style": "minimalist",
+  "occasions": [
+   "casual",
+   "travel"
+  ],
+  "seasons": [
+   "summer"
+  ],
+  "image": "assets/images/garments/straw-sun-hat.jpg",
+  "source": "clothing-dataset-small/test/hat/ff62e59f-c949-4f8e-8fca-798ab3e174c5.jpg",
+  "cutout": "assets/images/garments/cutouts/straw-sun-hat.webp"
+ }
+]

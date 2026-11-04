@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval' 'sha256-Yd9uvy1ZPoMFnWWgteNR5ykAr+pHgg3PamAY5jrfGnU='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://api.open-meteo.com; worker-src 'self' blob:; frame-src 'none'; media-src 'self' blob:; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profile, FitCheck.AI</title>
+  <meta name="author" content="Swayam Shakya">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#fff5e8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#150a2c" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="assets/images/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="assets/images/favicon.png" sizes="64x64" type="image/png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="assets/images/icons/apple-touch-icon.png">
+  <script>
+    (function () {
+      // FitCheck.AI is never meant to be framed: hide it if another site does (clickjacking)
+      if (window.top !== window.self) document.documentElement.style.display = "none";
+      try {
+        var t = localStorage.getItem("fitcheck.theme");
+        if (t === "dark" || t === "light") document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preload" href="assets/fonts/bungee.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/rubik-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/app.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+  <script type="module" src="assets/js/pages/profile.js"></script>
+</head>
+<body class="app">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header data-shell-header class="site-header"></header>
+
+  <main id="main" class="container app-main">
+
+    <div class="page-head">
+      <div>
+        <h1>Profile and preferences</h1>
+        <p>Your preferences shape every suggestion, even when you don't set them on the generator.</p>
+      </div>
+    </div>
+
+    <div class="profile-layout" data-profile hidden>
+      <form class="panel profile-section" data-form="account" novalidate>
+        <h2 class="panel__title">Account</h2>
+        <div class="field">
+          <label class="field__label" for="p-name">Name</label>
+          <input class="input" id="p-name" name="display_name" maxlength="60" required autocomplete="name">
+        </div>
+        <div class="field">
+          <label class="field__label" for="p-email">Email</label>
+          <input class="input" id="p-email" type="email" disabled>
+        </div>
+        <p class="field__hint" data-member-since></p>
+        <button class="btn btn--primary" type="submit">Save name</button>
+      </form>
+
+      <form class="panel profile-section profile-section--wide" data-form="preferences" novalidate>
+        <h2 class="panel__title">Preferences</h2>
+        <fieldset class="chips" data-field="preferred_styles">
+          <legend>Styles you like</legend>
+          <div class="chips" data-pref-styles></div>
+        </fieldset>
+        <fieldset class="chips" data-field="preferred_palette">
+          <legend>Usual colour palette</legend>
+          <div class="chips" data-pref-palette></div>
+        </fieldset>
+        <fieldset class="field" data-field="favorite_colors">
+          <legend class="field__label">Favourite colours <span class="field__hint">(up to 8)</span></legend>
+          <div class="swatches" data-pref-fav></div>
+        </fieldset>
+        <fieldset class="field" data-field="avoided_colors">
+          <legend class="field__label">Colours to avoid <span class="field__hint">(up to 8)</span></legend>
+          <div class="swatches" data-pref-avoid></div>
+        </fieldset>
+        <div class="form-grid">
+          <div class="field">
+            <label class="field__label" for="p-occasion">Default occasion</label>
+            <select class="select" id="p-occasion" name="default_occasion"><option value="">None</option></select>
+          </div>
+          <div class="field">
+            <label class="field__label" for="p-unit">Temperature unit</label>
+            <select class="select" id="p-unit" name="temperature_unit">
+              <option value="C">Celsius (°C)</option>
+              <option value="F">Fahrenheit (°F)</option>
+            </select>
+          </div>
+          <div class="field" id="budget">
+            <label class="field__label" for="p-budget">Shopping budget</label>
+            <select class="select" id="p-budget" name="budget">
+              <option value="budget">Keep it cheap (basics under $40)</option>
+              <option value="mid">A little more (up to about $80)</option>
+            </select>
+          </div>
+        </div>
+        <fieldset class="chips" data-field="model_build">
+          <legend>Who wears your outfits in the photos</legend>
+          <label class="chip"><input type="radio" name="model_build" value="masc"><span>A man</span></label>
+          <label class="chip"><input type="radio" name="model_build" value="fem"><span>A woman</span></label>
+        </fieldset>
+        <fieldset class="chips" data-field="model_skin">
+          <legend>Skin tone</legend>
+          <label class="chip"><input type="radio" name="model_skin" value="light"><span>Light</span></label>
+          <label class="chip"><input type="radio" name="model_skin" value="medium"><span>Medium</span></label>
+          <label class="chip"><input type="radio" name="model_skin" value="tan"><span>Tan</span></label>
+          <label class="chip"><input type="radio" name="model_skin" value="deep"><span>Deep</span></label>
+        </fieldset>
+        <fieldset class="chips" data-field="model_body">
+          <legend>Body type</legend>
+          <label class="chip"><input type="radio" name="model_body" value="slim"><span>Slim</span></label>
+          <label class="chip"><input type="radio" name="model_body" value="average"><span>Average</span></label>
+          <label class="chip"><input type="radio" name="model_body" value="athletic"><span>Athletic</span></label>
+          <label class="chip"><input type="radio" name="model_body" value="curvy"><span>Curvy</span></label>
+          <label class="chip"><input type="radio" name="model_body" value="plus"><span>Plus size</span></label>
+        </fieldset>
+        <fieldset class="chips" data-field="photo_setting">
+          <legend>Where the photos are taken</legend>
+          <label class="chip"><input type="radio" name="photo_setting" value="studio"><span>Plain studio, like a lookbook</span></label>
+          <label class="chip"><input type="radio" name="photo_setting" value="occasion"><span>Somewhere that fits the plan</span></label>
+        </fieldset>
+        <button class="btn btn--primary" type="submit">Save preferences</button>
+      </form>
+
+      <form class="panel profile-section" data-form="password" novalidate>
+        <h2 class="panel__title">Password</h2>
+        <div class="field">
+          <label class="field__label" for="p-current">Current password</label>
+          <input class="input" id="p-current" name="current_password" type="password" autocomplete="current-password" required>
+        </div>
+        <div class="field">
+          <label class="field__label" for="p-new">New password</label>
+          <input class="input" id="p-new" name="new_password" type="password" autocomplete="new-password" minlength="8" required>
+          <p class="field__hint">At least 8 characters, mixing letters with numbers or symbols. Other devices will be signed out.</p>
+        </div>
+        <button class="btn btn--primary" type="submit">Change password</button>
+      </form>
+
+      <section class="panel profile-section profile-section--wide" id="photos" data-photos>
+        <h2 class="panel__title">Realistic photos</h2>
+        <p>Every outfit FitCheck.AI picks is shown as a realistic AI photo of a person wearing it. Choose which image service makes the photos.</p>
+        <p class="photo-key__status" data-photo-status>Checking…</p>
+
+        <fieldset class="engine-pick" data-field="engine">
+          <legend>Photo engine</legend>
+          <label class="engine-opt">
+            <input type="radio" name="engine" value="free">
+            <span><strong>Free, open source (default)</strong>
+              Open-weight models (FLUX.1, Z-Image, FLUX.1 Kontext) through Pollinations, an open-source project. Works with no account: one photo every 15–45 seconds, with a small logo. A free Pollinations key makes it faster, removes the logo and lets the model look at your clothing photos.</span>
+          </label>
+          <label class="engine-opt">
+            <input type="radio" name="engine" value="gemini">
+            <span><strong>Google Gemini</strong>
+              Copies your exact garments most faithfully. Needs your Gemini API key: a free allowance, then about $0.04 a photo.</span>
+          </label>
+        </fieldset>
+
+        <form class="photo-key__form" data-form="pollen" novalidate>
+          <div class="field">
+            <label class="field__label" for="p-pollen">Free Pollinations key <span class="field__hint">(optional)</span></label>
+            <input class="input" id="p-pollen" name="pollen_key" type="password" autocomplete="off" spellcheck="false" placeholder="sk_…">
+            <p class="field__hint">Sign up free at <a href="https://enter.pollinations.ai" target="_blank" rel="noopener">enter.pollinations.ai</a>. Tip: limit the key to free models.</p>
+          </div>
+          <div class="backup-actions">
+            <button class="btn btn--primary" type="submit">Save free key</button>
+            <button class="btn btn--quiet" type="button" data-pollen-remove hidden>Remove key</button>
+          </div>
+        </form>
+
+        <form class="photo-key__form" data-form="photos" novalidate hidden>
+          <div class="field">
+            <label class="field__label" for="p-gemini">Gemini API key</label>
+            <input class="input" id="p-gemini" name="gemini_key" type="password" autocomplete="off" spellcheck="false" placeholder="AIza…">
+            <p class="field__hint">Get one at <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com/apikey</a>.</p>
+          </div>
+          <div class="backup-actions">
+            <button class="btn btn--primary" type="submit">Check and save key</button>
+            <button class="btn btn--quiet" type="button" data-photo-remove hidden>Remove key</button>
+          </div>
+        </form>
+        <p class="field__hint">Keys are stored encrypted on the FitCheck.AI server, are never sent back to any browser, and aren't included in backups. When a photo is made, the server sends a description of the outfit (and, with a key, its clothing photos) to the image service you chose, and nowhere else. Each photo is kept with its outfit, so opening it again is instant.</p>
+      </section>
+
+      <section class="panel profile-section" data-backup>
+        <h2 class="panel__title">Backup</h2>
+        <p class="muted">Your wardrobe is stored on the FitCheck.AI server, so it's there on any device you sign in from. A backup file is a copy you keep yourself, or use to move to another FitCheck.AI server.</p>
+        <div class="backup-actions">
+          <button class="btn btn--primary" type="button" data-export>Download backup</button>
+          <label class="btn" for="p-import">Restore from a backup…</label>
+          <input class="visually-hidden" id="p-import" type="file" accept="application/json,.json" data-import>
+        </div>
+        <p class="field__hint">Restoring replaces the wardrobe and outfits in this account. Your sign-in stays the same.</p>
+      </section>
+
+      <section class="panel profile-section">
+        <h2 class="panel__title">Sign-in and security</h2>
+        <p class="muted">A normal sign-in ends after 30 minutes without use or 12 hours at most. "Keep me signed in" lasts 30 days on that device. Your photo-service keys are encrypted on the server and only ever used there.</p>
+        <h3 class="device-list__title">Signed in now</h3>
+        <ul class="device-list" data-devices aria-live="polite"><li class="muted">Loading…</li></ul>
+        <button class="btn" type="button" data-sign-out-all>Sign out everywhere</button>
+      </section>
+
+      <section class="panel profile-section danger-zone">
+        <h2 class="panel__title">Leave FitCheck.AI</h2>
+        <p class="muted">Deletes your account, wardrobe, photos and outfit history. This can't be undone.</p>
+        <form data-form="delete" class="delete-form" novalidate>
+          <div class="field">
+            <label class="field__label" for="p-del">Password</label>
+            <input class="input" id="p-del" name="password" type="password" autocomplete="current-password" required>
+          </div>
+          <button class="btn btn--danger" type="submit">Delete my account</button>
+        </form>
+      </section>
+    </div>
+    <div data-profile-loading><div class="loading-block"><span class="stitch-loader" role="status"><svg viewBox="0 0 64 10" aria-hidden="true"><line x1="2" y1="5" x2="62" y2="5"/></svg><span>Loading your profile…</span></span></div></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <p>FitCheck.AI, designed and built by <strong>Swayam Shakya</strong>.</p>
+      <span class="api-status" data-api-status data-state="checking">Starting up…</span>
+      <nav aria-label="Footer" class="footer-links"><a href="privacy.html">Privacy and cookies</a> <a href="terms.html">Terms</a></nav>
+    </div>
+  </footer>
+  <nav data-shell-tabbar></nav>
+</body>
+</html>

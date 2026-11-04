@@ -1,0 +1,9 @@
+# Everything needed to run the tests, the notebook and the model training.
+# The server's own dependencies come first (pinned in backend/requirements.txt).
+-r ../backend/requirements.txt
+pandas
+matplotlib
+jupyter
+nbconvert
+pytest==9.1.1
+playwright==1.63.0

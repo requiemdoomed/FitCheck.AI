@@ -1,0 +1,77 @@
+# FitCheck.AI on Render: one web service (Flask + gunicorn, serves the pages
+# and /api from one origin) and one private MySQL 8 service with a disk.
+# Deploy: Render dashboard -> New -> Blueprint -> pick this repository.
+# You'll be asked for the values marked "sync: false"; SECRET_KEY is generated.
+# Already have a managed MySQL (Aiven, PlanetScale-compatible, Railway...)?
+# Delete the fitcheck-mysql service and set DB_HOST/DB_PORT/DB_USER/DB_NAME
+# (and DB_SSL=1) on the web service instead.
+
+services:
+  - type: web
+    name: fitcheck
+    runtime: python
+    plan: starter
+    region: oregon
+    buildCommand: pip install -r backend/requirements.txt
+    # creates any missing tables (safe on every deploy), then serves
+    startCommand: cd backend && python init_db.py && gunicorn wsgi:app --bind 0.0.0.0:$PORT --workers 2 --threads 4 --timeout 150
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.13.5"
+      - key: FLASK_ENV
+        value: production
+      - key: SECRET_KEY
+        generateValue: true        # keep it: it also unlocks saved photo-service keys
+      - key: DB_HOST
+        fromService:
+          type: pserv
+          name: fitcheck-mysql
+          property: host
+      - key: DB_PORT
+        value: "3306"
+      - key: DB_NAME
+        value: fitcheck
+      - key: DB_USER
+        value: fitcheck_app
+      - key: DB_PASSWORD
+        sync: false                # enter the same value as MYSQL_PASSWORD below
+      - key: POLLINATIONS_KEY
+        sync: false                # optional: a free Pollinations key for better photo models
+      # password-reset email (any SMTP provider: Brevo, Mailgun, SendGrid, SES...)
+      - key: APP_URL
+        sync: false                # the public address, e.g. https://fitcheck.onrender.com
+      - key: SMTP_HOST
+        sync: false
+      - key: SMTP_PORT
+        value: "587"
+      - key: SMTP_SECURITY
+        value: starttls
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASSWORD
+        sync: false
+      - key: MAIL_FROM
+        sync: false                # e.g. FitCheck.AI <no-reply@yourdomain.com>
+
+  - type: pserv
+    name: fitcheck-mysql
+    runtime: image
+    image:
+      url: docker.io/library/mysql:8.4
+    plan: starter
+    region: oregon
+    disk:
+      name: mysql-data
+      mountPath: /var/lib/mysql
+      sizeGB: 5
+    envVars:
+      - key: MYSQL_DATABASE
+        value: fitcheck
+      - key: MYSQL_USER
+        value: fitcheck_app
+      - key: MYSQL_PASSWORD
+        sync: false                # a long random password; also set it as DB_PASSWORD above
+      - key: MYSQL_ROOT_PASSWORD
+        generateValue: true

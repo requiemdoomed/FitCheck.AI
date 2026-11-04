@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval' 'sha256-Yd9uvy1ZPoMFnWWgteNR5ykAr+pHgg3PamAY5jrfGnU='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://api.open-meteo.com; worker-src 'self' blob:; frame-src 'none'; media-src 'self' blob:; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FitCheck.AI, outfits from the clothes you own</title>
+  <meta name="description" content="FitCheck.AI is a digital wardrobe that dresses a model in the clothes you actually own, matched to your plans and the weather. Built by Swayam Shakya.">
+  <meta name="author" content="Swayam Shakya">
+  <meta name="theme-color" content="#fff5e8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#150a2c" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="assets/images/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="assets/images/favicon.png" sizes="64x64" type="image/png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="assets/images/icons/apple-touch-icon.png">
+
+  <!-- set the saved theme before first paint so dark mode doesn't flash -->
+  <script>
+    (function () {
+      // FitCheck.AI is never meant to be framed: hide it if another site does (clickjacking)
+      if (window.top !== window.self) document.documentElement.style.display = "none";
+      try {
+        var t = localStorage.getItem("fitcheck.theme");
+        if (t === "dark" || t === "light") document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preload" href="assets/fonts/bungee.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/rubik-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/landing.css">
+  <script type="module" src="assets/js/pages/landing.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track">
+      <span>Neutrals let one bright piece be the star</span>
+      <span>Rain on the forecast? Boots beat sandals</span>
+      <span>Denim counts as a neutral</span>
+      <span>Three loud colours is one too many</span>
+      <span>Under 12°C, bring a layer</span>
+      <span>Tonal outfits look expensive</span>
+      <span>Neutrals let one bright piece be the star</span>
+      <span>Rain on the forecast? Boots beat sandals</span>
+      <span>Denim counts as a neutral</span>
+      <span>Three loud colours is one too many</span>
+      <span>Under 12°C, bring a layer</span>
+      <span>Tonal outfits look expensive</span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="wordmark" href="index.html" aria-label="FitCheck.AI home"><img class="wordmark__logo" src="assets/images/logo/fitcheck-mark.png" alt="" width="36" height="36">FitCheck<span class="wordmark__ai">.ai</span></a>
+      <div class="site-header__actions">
+        <button class="icon-btn theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to dark mode">
+          <span class="swatch" aria-hidden="true"></span>
+        </button>
+        <a class="btn btn--quiet hide-sm" href="login.html">Sign in</a>
+        <a class="btn btn--primary" href="register.html">Create account</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <span class="paint paint--hero-a" aria-hidden="true"></span>
+      <span class="paint paint--hero-b" aria-hidden="true"></span>
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <p class="hero__script">your closet, remixed</p>
+          <h1 class="hero__title">
+            <span>What</span> <span>should</span> <span>I&nbsp;wear</span> <span>today?</span>
+          </h1>
+          <p class="hero__lede">
+            FitCheck.AI picks an outfit from the clothes you actually own, for where you're going
+            and what the weather's doing, shows it as a realistic photo of a person wearing it,
+            and tells you why it works.
+          </p>
+          <div class="hero__ctas">
+            <a class="btn btn--primary btn--lg" href="register.html">Start your wardrobe</a>
+            <a class="btn btn--lg" href="login.html">I already have one</a>
+          </div>
+        </div>
+
+        <div class="mixer" aria-labelledby="mixer-title">
+          <div class="mixer__window">
+            <div class="mixer__bar">
+              <h2 id="mixer-title" class="mixer__title">Mix an outfit</h2>
+              <button class="btn btn--tape mixer__shuffle" type="button" data-shuffle>Shuffle</button>
+            </div>
+            <div class="mixer__body">
+              <div class="mixer__stage" data-stage aria-live="polite"></div>
+              <div class="mixer__controls">
+                <div class="strip" data-slot="top"></div>
+                <div class="strip" data-slot="bottom"></div>
+                <div class="strip" data-slot="shoes"></div>
+                <div class="tape-readout">
+                  <div class="tape-readout__score">
+                    <span class="tape-readout__label">Colour</span>
+                    <output class="tape-readout__number" data-score aria-live="polite">–</output>
+                  </div>
+                  <p class="tape-readout__verdict" data-verdict aria-live="polite"></p>
+                </div>
+              </div>
+            </div>
+            <p class="mixer__note">
+              Real photos of real clothes; "See it on a person" makes a realistic AI photo with free,
+              open-source models. Signed in, outfits come from your own wardrobe and weigh the occasion,
+              the weather and your feedback.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- a moving rail of real pieces -->
+    <section class="rail-show" aria-label="Pieces from the demo wardrobe">
+      <div class="rail-show__track" data-rail-show></div>
+    </section>
+
+    <section class="container words" aria-labelledby="words-title">
+      <div class="words__copy">
+        <h2 id="words-title">No photo? Just say it.</h2>
+        <p>
+          Type <q>black hoodie</q> and FitCheck.AI shows a real photographed hoodie, dyed to your
+          colour in the CIELAB colour space so the folds and seams stay. Upload a photo instead and
+          it cuts your piece out of the background so the model can wear it.
+        </p>
+        <fieldset class="words__picker">
+          <legend>Try a colour</legend>
+          <div class="words__swatches" data-dye></div>
+        </fieldset>
+      </div>
+      <div class="words__show">
+        <figure class="words__pic">
+          <img data-dye-img="hoodie" src="assets/images/stock-demo/hoodie-black.webp" alt="A real hoodie photo dyed black" width="320" height="320">
+          <figcaption data-dye-caption="hoodie">Black hoodie</figcaption>
+        </figure>
+        <figure class="words__pic words__pic--tilt">
+          <img data-dye-img="jeans" src="assets/images/stock-demo/jeans-black.webp" alt="Real jeans dyed black" width="320" height="320">
+          <figcaption data-dye-caption="jeans">Black jeans</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="pairings" aria-labelledby="pairings-title">
+      <div class="container">
+        <div class="pairings__head">
+          <h2 id="pairings-title">Cheap basics, good pairings</h2>
+          <p>
+            A plain shirt and the right trousers beat an expensive outfit that fights itself.
+            Every combination below uses basics you can find for under $40 a piece, photographed
+            by free, open-source AI the same way your own outfits are.
+          </p>
+        </div>
+        <ul class="pairings__grid" data-pairings></ul>
+      </div>
+    </section>
+
+    <!-- genuinely a sequence, so it's numbered -->
+    <section class="steps container" aria-labelledby="steps-title">
+      <h2 id="steps-title">Closet to outfit in three</h2>
+      <ol class="steps__list">
+        <li class="step">
+          <span class="step__num" aria-hidden="true">1</span>
+          <h3>Hang up what you own</h3>
+          <p>Snap each piece or just name it. Tag what it is, its colours, the seasons and occasions it suits.</p>
+        </li>
+        <li class="step">
+          <span class="step__num" aria-hidden="true">2</span>
+          <h3>Say where you're going</h3>
+          <p>Pick the occasion, the weather and the temperature, plus a style or colour mood if you like.</p>
+        </li>
+        <li class="step">
+          <span class="step__num" aria-hidden="true">3</span>
+          <h3>See it on a real person</h3>
+          <p>A realistic AI photo of someone wearing your own pieces, with a score out of 100 and the reasons. Keep it, save it or ask for another.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="label-section container" aria-labelledby="label-title">
+      <div class="label-section__copy">
+        <h2 id="label-title">Every outfit comes with its paint chips</h2>
+        <p>
+          Some things are true for everyone. You don't wear sandals in the snow, and a suit is
+          overkill for the gym. Simple rules handle those.
+        </p>
+        <p>
+          Other things are true only for you. Two machine-learning models learn from the outfits you
+          like and skip. Until they've seen enough of your feedback, the rules carry the score.
+        </p>
+      </div>
+
+      <div class="care-label" role="list" aria-label="What the outfit score considers">
+        <div class="care-label__row" role="listitem">
+          <span class="care-label__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="6" width="16" height="14" rx="1.5"/><path d="M4 10.5h16M8.5 4v4m7-4v4"/></svg></span>
+          <div><div class="care-label__title">Occasion</div><div class="care-label__desc">College, work, a date or the gym each ask for something different.</div></div>
+          <span class="care-label__weight">RULE</span>
+        </div>
+        <div class="care-label__row" role="listitem">
+          <span class="care-label__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg></span>
+          <div><div class="care-label__title">Weather</div><div class="care-label__desc">Temperature and rain decide layers, fabrics and footwear.</div></div>
+          <span class="care-label__weight">RULE</span>
+        </div>
+        <div class="care-label__row" role="listitem">
+          <span class="care-label__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="9.5" cy="10" r="5"/><circle cx="14.5" cy="10" r="5"/><circle cx="12" cy="14.5" r="5"/></svg></span>
+          <div><div class="care-label__title">Colour</div><div class="care-label__desc">Measured in CIELAB, the colour space built around how eyes see difference.</div></div>
+          <span class="care-label__weight">RULE</span>
+        </div>
+        <div class="care-label__row" role="listitem">
+          <span class="care-label__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 4 20 20H4Z"/></svg></span>
+          <div><div class="care-label__title">Style</div><div class="care-label__desc">Minimalist, streetwear, classic, smart casual, sporty or elegant.</div></div>
+          <span class="care-label__weight">RULE</span>
+        </div>
+        <div class="care-label__row" role="listitem">
+          <span class="care-label__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="6" cy="7" r="2"/><circle cx="18" cy="7" r="2"/><circle cx="12" cy="18" r="2"/><path d="m7.5 8.5 3.5 8m1.5 0 4-8"/></svg></span>
+          <div><div class="care-label__title">Your taste</div><div class="care-label__desc">A decision tree and a nearest-neighbours model trained on rated outfits.</div></div>
+          <span class="care-label__weight">ML</span>
+        </div>
+        <div class="care-label__row" role="listitem">
+          <span class="care-label__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M6 20v-9h3l3-7c2 0 3 1.4 3 3.4l-.6 3.6H19c1.4 0 2.3 1.3 2 2.6l-1.3 5.2c-.3 1-1 1.6-2 1.6Z"/></svg></span>
+          <div><div class="care-label__title">Your feedback</div><div class="care-label__desc">Every like and skip nudges the next suggestion.</div></div>
+          <span class="care-label__weight">ML</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="container closing__inner">
+        <p class="closing__line">Your wardrobe already holds more outfits than you think.</p>
+        <p class="closing__sub">No ads, no tracking, no selling data: your wardrobe is stored securely and only you can see it.</p>
+        <a class="btn btn--tape btn--lg" href="register.html">Start your wardrobe</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <p>FitCheck.AI, designed and built by <strong>Swayam Shakya</strong></p>
+      <ul class="badges" aria-label="Built with">
+        <li>PRIVACY FIRST</li>
+        <li>FLASK + MYSQL</li>
+        <li>SCIKIT ML</li>
+        <li>CC0 PHOTOS</li>
+      </ul>
+      <span class="api-status" data-api-status data-state="checking">Starting up…</span>
+      <nav aria-label="Footer" class="footer-links">
+        <a href="privacy.html">Privacy and cookies</a>
+        <a href="terms.html">Terms</a>
+        <a href="login.html">Sign in</a>
+        <a href="register.html">Create account</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
